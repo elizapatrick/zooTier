@@ -1,0 +1,67 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# =========================
+# FRONTEND
+# =========================
+node_modules
+dist
+dist-ssr
+*.local
+.vite/
+
+# =========================
+# BACKEND (Spring Boot / Maven)
+# =========================
+backend/target/
+target/
+*.class
+*.jar
+*.war
+*.ear
+
+# Spring Boot Logs
+backend/*.log
+
+# =========================
+# ENV / CONFIG (vorsichtig!)
+# =========================
+.env
+.env.*
+application-local.properties
+application-dev.properties
+
+# =========================
+# Editor directories and files
+# =========================
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.iml
+*.iws
+*.ipr
+
+.DS_Store
+Thumbs.db
+
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# =========================
+# IntelliJ build output
+# =========================
+out/
+
+# =========================
+# Coverage / Test
+# =========================
+coverage/
