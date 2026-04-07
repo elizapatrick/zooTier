@@ -1,120 +1,145 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
+import { useEffect, useMemo, useState } from 'react'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [tiers, setTiers] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState('')
+  const [health, setHealth] = useState('unbekannt')
+  const [favoritesOnly, setFavoritesOnly] = useState(false)
+  const [habitatFilter, setHabitatFilter] = useState('')
+  const [recommendation, setRecommendation] = useState(null)
+
+  const filteredTiers = useMemo(() => {
+    if (!habitatFilter.trim()) {
+      return tiers
+    }
+
+    return tiers.filter((tier) =>
+      tier.habitat.toLowerCase().includes(habitatFilter.toLowerCase()),
+    )
+  }, [tiers, habitatFilter])
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        setLoading(true)
+        setError('')
+
+        const healthResponse = await fetch('/api/health')
+        const healthData = await healthResponse.json()
+        setHealth(healthData.status)
+
+        const tiersResponse = await fetch(
+          `/api/tiers?favoritesOnly=${favoritesOnly}`,
+        )
+
+        if (!tiersResponse.ok) {
+          throw new Error('Tierdaten konnten nicht geladen werden.')
+        }
+
+        const tiersData = await tiersResponse.json()
+        setTiers(tiersData.items)
+      } catch (err) {
+        setError(err.message || 'Unbekannter Fehler beim Laden der Daten.')
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    loadData()
+  }, [favoritesOnly])
+
+  const fetchRecommendation = async () => {
+    try {
+      const response = await fetch('/api/recommendation')
+      const data = await response.json()
+      setRecommendation(data)
+    } catch {
+      setRecommendation({
+        title: 'Empfehlung',
+        recommendation: { name: 'Keine Empfehlung verfuegbar' },
+      })
+    }
+  }
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
+    <main className="page">
+      <header className="hero">
+        <p className="eyebrow">ZooTier Prototype</p>
+        <h1>Tierverwaltung mit Node.js API</h1>
+        <p>
+          Frontend (React + Vite) spricht mit deinem Backend auf
+          <strong> localhost:4000</strong>.
+        </p>
+      </header>
+
+      <section className="status-grid">
+        <article className="card">
+          <h2>Backend-Status</h2>
           <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
+            API ist aktuell: <span className="pill">{health}</span>
           </p>
-        </div>
-        <button
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
+        </article>
+
+        <article className="card">
+          <h2>Empfehlung</h2>
+          <button type="button" onClick={fetchRecommendation}>
+            Route vorschlagen
+          </button>
+          {recommendation && (
+            <p className="recommendation">
+              {recommendation.title}: {recommendation.recommendation.name}
+            </p>
+          )}
+        </article>
       </section>
 
-      <div className="ticks"></div>
+      <section className="card">
+        <div className="toolbar">
+          <label>
+            Habitat filtern
+            <input
+              value={habitatFilter}
+              onChange={(event) => setHabitatFilter(event.target.value)}
+              placeholder="z.B. Savanne"
+            />
+          </label>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
+          <label className="checkbox">
+            <input
+              type="checkbox"
+              checked={favoritesOnly}
+              onChange={(event) => setFavoritesOnly(event.target.checked)}
+            />
+            Nur Favoriten
+          </label>
         </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
+
+        {loading && <p>Lade Tierdaten...</p>}
+        {error && <p className="error">{error}</p>}
+
+        {!loading && !error && (
+          <div className="list">
+            {filteredTiers.map((tier) => (
+              <article className="tier-card" key={tier.id}>
+                <h3>{tier.name}</h3>
+                <p>
+                  Habitat: <strong>{tier.habitat}</strong>
+                </p>
+                <p>Gefahrenstufe: {tier.dangerLevel}/5</p>
+                <p>Futterzeiten: {tier.feedingTimes.join(', ')}</p>
+                {tier.isFavorite && <span className="tag">Favorit</span>}
+              </article>
+            ))}
+
+            {filteredTiers.length === 0 && (
+              <p>Keine Tiere fuer den aktuellen Filter gefunden.</p>
+            )}
+          </div>
+        )}
       </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+    </main>
   )
 }
 
