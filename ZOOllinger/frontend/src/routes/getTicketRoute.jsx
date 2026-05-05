@@ -1,9 +1,10 @@
 import { useMemo, useState } from "react";
 import "../App.css";
+import "../routes/getTicketRoute.css";
 import { BookingHeader } from "../components/BookingHeader";
 import { ContactForm } from "../components/ContactForm";
 import { OrderSummary } from "../components/OrderSummary";
-import { TicketCard } from "../components/TicketCard";
+import TicketCard from "../components/TicketCard";
 import { adultIcon, childIcon, familyIcon } from "../components/Icons";
 import { ticketOptions } from "../components/bookingData";
 
@@ -48,16 +49,22 @@ export default function GetTicketRoute() {
 
   const handlePurchase = () => {
     if (totalTickets === 0) return;
-
     window.alert("Purchase flow can be connected to your backend next.");
   };
 
   return (
     <main className="booking-page">
-      <BookingHeader />
+
+      {/* HEADER */}
+      <div className="booking-header-wrapper">
+        <BookingHeader />
+      </div>
 
       <section className="booking-layout">
+
         <div className="booking-layout__main">
+
+          {/* SELECT TICKETS */}
           <section className="section-block">
             <div className="section-heading">
               <p className="section-heading__eyebrow">Select Tickets</p>
@@ -85,16 +92,25 @@ export default function GetTicketRoute() {
             </div>
           </section>
 
-          <ContactForm />
+          {/* ABSTAND UNTER SELECT TICKETS */}
+          <div className="after-tickets-spacing"></div>
+
+          {/* CONTACT FORM */}
+          <div className="contact-form-wrapper">
+            <ContactForm />
+          </div>
+
+          {/* ORDER SUMMARY */}
+          <div className="order-summary-wrapper">
+            <OrderSummary
+              selectedTickets={selectedTickets}
+              totalPrice={totalPrice}
+              onPurchase={handlePurchase}
+            />
+          </div>
+
         </div>
 
-        <aside className="booking-layout__aside">
-          <OrderSummary
-            selectedTickets={selectedTickets}
-            totalPrice={totalPrice}
-            onPurchase={handlePurchase}
-          />
-        </aside>
       </section>
     </main>
   );

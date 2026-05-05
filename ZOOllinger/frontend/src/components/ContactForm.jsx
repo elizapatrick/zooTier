@@ -12,7 +12,7 @@ export function ContactForm() {
           <span>Full Name</span>
           <div className="field__input-wrap">
             <span className="field__icon">{ticketIcon}</span>
-            <input type="text" defaultValue="John Doe" />
+            <input type="text" defaultValue="" />
           </div>
         </label>
 
@@ -20,7 +20,7 @@ export function ContactForm() {
           <span>Email Address</span>
           <div className="field__input-wrap">
             <span className="field__icon">{mailIcon}</span>
-            <input type="email" defaultValue="john@example.com" />
+            <input type="email" defaultValue="" />
           </div>
         </label>
 

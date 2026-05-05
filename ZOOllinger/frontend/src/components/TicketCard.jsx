@@ -1,4 +1,6 @@
-export function TicketCard({
+// src/components/TicketCard.jsx
+
+export default function TicketCard({
   title,
   subtitle,
   price,
@@ -8,30 +10,20 @@ export function TicketCard({
   onDecrease,
 }) {
   return (
-    <article className="ticket-card">
-      <div className="ticket-card__top">
-        <div className="ticket-card__icon">{icon}</div>
+    <div className="ticket-card">
+      <div className="ticket-card__icon">{icon}</div>
 
-        <div className="ticket-card__copy">
-          <h2>{title}</h2>
-          <p>{subtitle}</p>
-        </div>
-
-        <div className="ticket-card__price">
-          <strong>${price}</strong>
-          <span>per person</span>
-        </div>
+      <div className="ticket-card__info">
+        <div className="ticket-card__title">{title}</div>
+        <div className="ticket-card__subtitle">{subtitle}</div>
+        <div className="ticket-card__price">${price}</div>
       </div>
 
-      <div className="quantity-control" aria-label={`${title} quantity control`}>
-        <button type="button" onClick={onDecrease} aria-label={`Decrease ${title} tickets`}>
-          -
-        </button>
+      <div className="ticket-card__qty">
+        <button onClick={onDecrease}>−</button>
         <span>{quantity}</span>
-        <button type="button" onClick={onIncrease} aria-label={`Increase ${title} tickets`}>
-          +
-        </button>
+        <button onClick={onIncrease}>+</button>
       </div>
-    </article>
-  )
+    </div>
+  );
 }
