@@ -1,0 +1,392 @@
+.experience-page {
+  transform: scale(0.82);
+  transform-origin: top left;
+  width: 121%;
+}
+
+.experience-page {
+  min-height: 100vh;
+  background: #ecfff7;
+  color: #075f4c;
+}
+
+.experience-header {
+  height: 130px;
+  padding: 20px 32px;
+  background: white;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.experience-brand {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.experience-brand img {
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  box-shadow: 0 6px 15px rgba(0,0,0,.25);
+}
+
+.experience-brand h1 {
+  margin: 0;
+  font-size: 40px;
+  font-weight: 800;
+}
+
+.experience-brand p {
+  margin: 4px 0 0;
+  font-size: 22px;
+  color: #475569;
+}
+
+.experience-header-right {
+  display: flex;
+  align-items: center;
+  gap: 38px;
+}
+
+.guest-box {
+  height: 66px;
+  padding: 0 36px;
+  border: 1px solid #a7ead8;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.online-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #35c99b;
+}
+
+.back-link {
+  font-size: 20px;
+  font-weight: 700;
+  color: #075f4c;
+}
+
+.experience-tabs {
+  background: white;
+  padding: 0 32px 26px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  box-shadow: 0 4px 10px rgba(0,0,0,.12);
+}
+
+.experience-tab {
+  height: 90px;
+  border-radius: 14px;
+  border: 3px solid #a7ead8;
+  background: white;
+  color: #075f4c;
+  font-size: 28px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.experience-tab.active {
+  background: #08674f;
+  color: white;
+  border-color: #08674f;
+  box-shadow: 0 8px 18px rgba(0,0,0,.18);
+}
+
+.map-topbar {
+  height: 86px;
+  padding: 0 24px;
+  background: white;
+  border-bottom: 1px solid #c8f3e6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.map-topbar h2 {
+  font-size: 26px;
+}
+
+.legend {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  color: #334155;
+  font-size: 17px;
+}
+
+.legend span {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.dot,
+.icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.quiet { background: #18bf92; border: 3px solid #064e3b; }
+.moderate { background: #f59e0b; border: 3px solid #d97706; }
+.crowded { background: #dc2626; border: 3px solid #991b1b; }
+
+.icon.restaurant { background: #dc2626; }
+.icon.restroom { background: #3b82f6; }
+.icon.exit { background: #92400e; }
+
+.divider {
+  width: 1px;
+  height: 26px;
+  background: #cbd5e1;
+}
+
+.park-map {
+  position: relative;
+  margin: 48px auto;
+  width: calc(100% - 96px);
+  height: 620px;
+  border: 6px solid #08674f;
+  border-radius: 34px;
+  background:
+    linear-gradient(rgba(8,103,79,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(8,103,79,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(216,255,240,.85), white);
+  background-size: 90px 90px;
+  overflow: hidden;
+}
+
+.zone {
+  position: absolute;
+  font-size: 54px;
+  font-weight: 900;
+  opacity: .22;
+}
+
+.savanna {
+  left: 12%;
+  top: 27%;
+  color: #08674f;
+}
+
+.polar {
+  right: 13%;
+  top: 20%;
+  color: #3b82f6;
+}
+
+.boundary {
+  position: absolute;
+  left: 42%;
+  top: 4%;
+  background: #08674f;
+  color: white;
+  padding: 16px 32px;
+  border-radius: 12px;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.map-pin-group {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.map-pin {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 5px 10px rgba(0,0,0,.25);
+}
+
+.map-pin.animal {
+  background: #dc2626;
+  border: 5px solid #991b1b;
+}
+
+.map-pin.restaurant {
+  background: #dc2626;
+  border: 5px solid #991b1b;
+}
+
+.map-pin.restroom {
+  background: #3b82f6;
+  border: 5px solid #1d4ed8;
+}
+
+.map-pin.exit {
+  background: #92400e;
+  border: 5px solid #6b2e0c;
+}
+
+.map-label {
+  margin-top: 10px;
+  background: white;
+  color: #075f4c;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-weight: 700;
+  box-shadow: 0 6px 14px rgba(0,0,0,.15);
+}
+
+.activities-section {
+  padding: 60px 0;
+}
+
+.activities-inner {
+  width: 82%;
+  margin: 0 auto;
+}
+
+.activities-inner h2 {
+  font-size: 38px;
+  margin: 0;
+}
+
+.activities-inner > p {
+  font-size: 24px;
+  color: #475569;
+}
+
+.activity-card {
+  margin-top: 36px;
+  padding: 36px;
+  border: 3px solid #a7ead8;
+  border-radius: 20px;
+  background: white;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 36px;
+}
+
+.activity-image {
+  width: 300px;
+  height: 270px;
+  border-radius: 10px;
+  object-fit: cover;
+  filter: grayscale(1);
+}
+
+.activity-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.activity-title-row h3 {
+  margin: 0;
+  font-size: 30px;
+}
+
+.included-badge {
+  background: #20c997;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-weight: 800;
+}
+
+.activity-location,
+.activity-description {
+  font-size: 20px;
+  color: #475569;
+}
+
+.activity-location {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.activity-content h4 {
+  font-size: 20px;
+  margin-bottom: 14px;
+}
+
+.time-list,
+.animal-list {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.time-pill {
+  padding: 12px 18px;
+  border: 1px solid #a7ead8;
+  border-radius: 999px;
+  background: #f0fffa;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.animal-box {
+  min-width: 180px;
+  padding: 14px 20px;
+  border: 1px solid #c8f3e6;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.info-circle {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #c8f3e6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.animal-box strong {
+  font-size: 20px;
+}
+
+.animal-box p {
+  margin: 4px 0 0;
+  color: #64748b;
+}
+
+.rainforest {
+  left: 11%;
+  top: 56%;
+  color: #20c997;
+}
+
+.asia {
+  right: 20%;
+  top: 70%;
+  color: #ef4444;
+}
+
+.map-pin.animal.moderate {
+  background: #f59e0b;
+  border: 5px solid #d97706;
+}
+
+.map-pin.animal.quiet {
+  background: #18bf92;
+  border: 5px solid #064e3b;
+}
