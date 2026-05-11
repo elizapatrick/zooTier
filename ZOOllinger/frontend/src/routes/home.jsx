@@ -1,9 +1,11 @@
+import { useEffect, useMemo, useState } from "react";
 import "./home.css";
 
 import heroImg from '../../picture/home-picture.jpg';
 import lionImg from '../../picture/lion.jpg';
 import elephantImg from '../../picture/elephant.jpg';
 import parrotImg from '../../picture/parrot.jpg';
+import { toDisplayAnimal } from "../data/animalPresentation";
 
 
 const featuredAnimals = [
@@ -78,6 +80,38 @@ function IconHeart() {
 }
 
 export function Home() {
+  const [animals, setAnimals] = useState(featuredAnimals);
+
+  useEffect(() => {
+    let disposed = false;
+
+    fetch("/api/animals")
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to load animals");
+        return res.json();
+      })
+      .then((data) => {
+        if (!disposed && Array.isArray(data)) {
+          setAnimals(data.map(toDisplayAnimal));
+        }
+      })
+      .catch(() => {
+        // Keep local fallback data when backend is unavailable.
+      });
+
+    return () => {
+      disposed = true;
+    };
+  }, []);
+
+  const featured = useMemo(() => {
+    const byId = new Map(animals.map((animal) => [animal.id, animal]));
+    const preferred = ["lion", "elephant", "parrot"]
+      .map((id) => byId.get(id))
+      .filter(Boolean);
+    return preferred.length ? preferred : animals.slice(0, 3);
+  }, [animals]);
+
   return (
     <main className="home-page">
       <section className="hero">
@@ -168,7 +202,7 @@ export function Home() {
           </header>
 
           <div className="animals-grid">
-            {featuredAnimals.map((animal) => (
+            {featured.map((animal) => (
               <a key={animal.id} href={`/animals/${animal.id}`} className="animal-card__link">
                 <article className="animal-card">
                   <img
