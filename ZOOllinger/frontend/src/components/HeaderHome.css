@@ -1,0 +1,82 @@
+.header {
+  width: 100%;
+  height: 90px;
+  padding: 0 32px;
+  background: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-box {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: #0f5f5b;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-box h1 {
+  margin: 0;
+  font-size: 38px;
+  font-weight: 800;
+  color: #080812;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-button {
+  height: 48px;
+  padding: 0 18px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: rgb(71, 71, 71);
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.nav-button.active {
+  background: #0f5f5b;
+  color: white;
+}
+
+.logo-text {
+  margin: 0;
+  display: flex;
+  align-items: flex-end;
+  font-weight: 800;
+}
+
+.logo-main {
+  color: #0f5f5b; /* grün */
+  font-size: 36px;
+}
+
+.logo-sub {
+  color: #b60000; /* rot/orange */
+  font-size: 20px;
+  margin-left: 2px;
+  margin-bottom: 4px; /* leicht nach unten für den Look */
+}
