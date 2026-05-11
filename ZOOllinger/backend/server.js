@@ -4,99 +4,111 @@ import cors from 'cors';
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:5173',
+}));
 app.use(express.json());
 
-const tiers = [
+const animals = [
   {
-    id: 1,
-    name: 'Loewe',
-    habitat: 'Savanne',
-    dangerLevel: 4,
-    feedingTimes: ['09:00', '15:30'],
-    isFavorite: true,
-  },
-  {
-    id: 2,
-    name: 'Pinguin',
-    habitat: 'Kuestenbecken',
-    dangerLevel: 1,
-    feedingTimes: ['10:30', '16:00'],
-    isFavorite: false,
-  },
-  {
-    id: 3,
-    name: 'Giraffe',
-    habitat: 'Afrika-Anlage',
-    dangerLevel: 2,
-    feedingTimes: ['11:00', '17:15'],
-    isFavorite: true,
-  },
-  {
-    id: 4,
-    name: 'Orang-Utan',
-    habitat: 'Regenwaldhaus',
+    id: 'elephant',
+    name: 'African Elephant',
+    habitat: 'Savannah',
     dangerLevel: 3,
-    feedingTimes: ['12:00', '18:00'],
-    isFavorite: false,
+    feedingTimes: ['09:00', '13:30', '17:00'],
   },
   {
-    id: 5,
-    name: 'Krokodil',
-    habitat: 'Sumpfhalle',
+    id: 'parrot',
+    name: 'Macaw Parrot',
+    habitat: 'Rainforest Aviary',
+    dangerLevel: 1,
+    feedingTimes: ['08:15', '12:45', '16:15'],
+  },
+  {
+    id: 'komodo-dragon',
+    name: 'Komodo Dragon',
+    habitat: 'Dry Forest Enclosure',
     dangerLevel: 5,
-    feedingTimes: ['13:00'],
-    isFavorite: false,
+    feedingTimes: ['10:30', '15:30'],
+  },
+  {
+    id: 'lion',
+    name: 'African Lion',
+    habitat: 'Grassland',
+    dangerLevel: 5,
+    feedingTimes: ['10:00', '15:00'],
+  },
+  {
+    id: 'penguin',
+    name: 'King Penguin',
+    habitat: 'Arctic Exhibit',
+    dangerLevel: 1,
+    feedingTimes: ['08:30', '14:00', '18:00'],
+  },
+  {
+    id: 'gorilla',
+    name: 'Mountain Gorilla',
+    habitat: 'Rainforest',
+    dangerLevel: 4,
+    feedingTimes: ['11:00', '16:30'],
+  },
+  {
+    id: 'tiger',
+    name: 'Bengal Tiger',
+    habitat: 'Jungle Habitat',
+    dangerLevel: 5,
+    feedingTimes: ['09:45', '15:15'],
+  },
+  {
+    id: 'polar-bear',
+    name: 'Polar Bear',
+    habitat: 'Arctic Tundra',
+    dangerLevel: 4,
+    feedingTimes: ['10:15', '17:30'],
   },
 ];
 
-app.get('/api/health', (_req, res) => {
-  res.json({ status: 'ok', service: 'zoollinger-backend' });
-});
+const animalsById = new Map(animals.map(a => [a.id, a]));
 
-app.get('/api/tiers', (req, res) => {
-  const { habitat, favoritesOnly } = req.query;
-
-  let results = [...tiers];
-
-  if (habitat) {
-    results = results.filter((tier) =>
-      tier.habitat.toLowerCase().includes(String(habitat).toLowerCase()),
-    );
-  }
-
-  if (favoritesOnly === 'true') {
-    results = results.filter((tier) => tier.isFavorite);
-  }
-
+app.get('/api/branding', (_req, res) => {
   res.json({
-    count: results.length,
-    items: results,
+    logo: {
+      path: '/assets/logo-parrot.png',
+      alt: 'ZOOllinger Parrot Logo',
+    },
+    liveStats: {
+      guestCount: 1240,
+    },
   });
 });
 
-app.get('/api/tiers/:id', (req, res) => {
-  const id = Number(req.params.id);
-  const tier = tiers.find((item) => item.id === id);
-
-  if (!tier) {
-    return res.status(404).json({ message: 'Tier nicht gefunden' });
-  }
-
-  return res.json(tier);
+app.get('/api/animals', (_req, res) => {
+  res.json(animals);
 });
 
-app.get('/api/recommendation', (_req, res) => {
-  const calmAnimals = tiers.filter((tier) => tier.dangerLevel <= 2);
-  const randomIndex = Math.floor(Math.random() * calmAnimals.length);
-  const recommendation = calmAnimals[randomIndex];
+app.get('/api/animals/:id', (req, res) => {
+  const animal = animalsById.get(req.params.id);
+  
+  if (!animal) {
+    return res.status(404).json({ message: 'Animal not found' });
+  }
+  
+  res.json(animal);
+});
 
+app.get('/api/tickets', (_req, res) => {
   res.json({
-    title: 'Tipp fuer Familienroute',
-    recommendation,
+    currency: 'USD',
+    lastUpdated: '2026-05-11',
+    tickets: [
+      { type: 'adult', price: 29.99, available: true },
+      { type: 'child', price: 16.99, available: true },
+      { type: 'senior', price: 19.99, available: true },
+      { type: 'family', price: 79.99, available: false },
+    ],
   });
 });
 
 app.listen(PORT, () => {
-  console.log(`ZooTier backend running on http://localhost:${PORT}`);
+  console.log(`ZOOllinger backend running on http://localhost:${PORT}`);
 });
