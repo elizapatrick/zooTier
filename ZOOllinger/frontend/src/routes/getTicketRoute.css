@@ -1,56 +1,55 @@
-/* --- PAGE BACKGROUND --- */
+/* --- GLOBAL PAGE --- */
 .booking-page {
   display: flex;
   flex-direction: column;
   align-items: center;
   background: #f3f4f6;
-  padding: 40px 0;
+  padding: 40px 0; /* kleiner */
   font-family: system-ui, sans-serif;
+  color: #111827;
 }
 
-/* Header Abstand */
+/* HEADER */
 .booking-header-wrapper {
   width: 100%;
-  max-width: 1100px;
-  margin-bottom: 48px;
+  max-width: 1000px; /* kleiner */
+  margin-bottom: 40px;
 }
 
 /* --- MAIN LAYOUT --- */
 .booking-layout {
   display: flex;
   flex-direction: column;
-  gap: 32px;
   width: 100%;
-  max-width: 1100px;
+  max-width: 1000px; /* kleiner */
 }
 
-/* Abstand UNTER Select Tickets */
+/* Abstände */
 .after-tickets-spacing {
-  height: 48px;
+  height: 32px;
 }
 
-/* Abstand zwischen ContactForm und OrderSummary */
 .contact-form-wrapper {
   margin-top: 32px;
 }
 
-/* Abstand unter OrderSummary */
 .order-summary-wrapper {
-  margin-top: 48px;
+  margin-top: 32px;
 }
 
-/* --- SECTION BLOCK --- */
-.section-block {
-  background: white;
-  padding: 24px;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+/* --- SECTION BLOCK (WHITE CARD) --- */
+.section-block,
+.contact-form,
+.summary-card {
+  padding: 18px;              /* vorher 24–32 */
+  border-radius: 12px;        /* vorher 16–20 */
+  box-shadow: 0 4px 14px rgba(0,0,0,0.05); /* leichter */
 }
 
 .section-heading__eyebrow {
-  font-size: 14px;
-  font-weight: 600;
-  color: #6b7280;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1f2937;
   margin-bottom: 16px;
 }
 
@@ -58,7 +57,7 @@
 .ticket-stack {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px; /* kleiner */
 }
 
 /* --- TICKET CARD --- */
@@ -67,36 +66,36 @@
   grid-template-columns: auto 1fr auto;
   gap: 16px;
   align-items: center;
-  padding: 16px;
+  padding: 16px; /* kleiner */
   background: white;
-  border-radius: 16px;
+  border-radius: 14px; /* kleiner */
   border: 1px solid #e5e7eb;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.ticket-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
 }
 
 /* ICON */
 .ticket-card__icon {
-  width: 48px;
-  height: 48px;
+  width: 44px; /* kleiner */
+  height: 44px;
   border-radius: 50%;
-  background: #e5f0ff;
+  background: #e8f5ef; /* grünlicher Hintergrund */
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
-  color: #2563eb;
+  font-size: 20px; /* kleiner */
+  color: #04724D; /* dunkles Grün */
 }
 
 /* TEXT */
-.ticket-card__info {
-  display: flex;
-  flex-direction: column;
-}
-
 .ticket-card__title {
   font-size: 16px;
-  font-weight: 600;
-  color: #111827;
+  font-weight: 700;
 }
 
 .ticket-card__subtitle {
@@ -106,8 +105,8 @@
 }
 
 .ticket-card__price {
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 700;
   margin-top: 6px;
 }
 
@@ -115,7 +114,7 @@
 .ticket-card__qty {
   display: flex;
   align-items: center;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #d1d5db;
   border-radius: 999px;
   overflow: hidden;
   background: #f9fafb;
@@ -129,6 +128,7 @@
   font-size: 20px;
   cursor: pointer;
   color: #4b5563;
+  transition: background 0.15s;
 }
 
 .ticket-card__qty button:hover {
@@ -139,31 +139,157 @@
   width: 36px;
   text-align: center;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 700;
 }
 
-/* ORDER SUMMARY */
-.order-summary {
+/* --- ORDER SUMMARY --- */
+.summary-card {
   background: white;
-  padding: 24px;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  padding: 24px; /* kleiner */
+  border-radius: 16px; /* kleiner */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-/* BUTTON */
-.btn-primary {
+/* Titel */
+.summary-card__title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.summary-card__title h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.summary-card__title-icon {
+  font-size: 20px;
+  color: #04724D; /* grün */
+  background: #e8f5ef;
+  width: 40px; /* kleiner */
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Ticketliste */
+.summary-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.summary-list__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.summary-empty {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+/* Divider */
+.summary-divider {
+  height: 1px;
+  background: #e5e7eb;
+}
+
+/* Total */
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+}
+
+/* Button */
+.summary-button {
   width: 100%;
-  padding: 12px 0;
-  background: #2563eb;
-  color: white;
+  padding: 12px 0; /* kleiner */
+  background: #d7f6cb;
+  color: #04724D;
   border: none;
   border-radius: 999px;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 16px; /* kleiner */
+  font-weight: 700;
   cursor: pointer;
-  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.2s ease, transform 0.15s ease;
 }
 
-.btn-primary:hover {
-  background: #1d4ed8;
+.summary-button:hover {
+  background: #c4eeb5;
+  transform: translateY(-2px);
+}
+
+.summary-button__icon {
+  font-size: 18px; /* kleiner */
+  color: #04724D;
+}
+
+/* What's Included */
+.summary-included h3 {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.summary-included li {
+  font-size: 13px;
+  color: #374151;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.summary-included li::before {
+  content: "•";
+  color: #04724D;
+  font-size: 16px;
+}
+
+/* --- CONTACT FORM --- */
+.contact-form {
+  background: white;
+  padding: 24px; /* kleiner */
+  border-radius: 16px; /* kleiner */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-form label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.contact-form input {
+  width: 100%;
+  padding: 12px 14px; /* kleiner */
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  background: #f9fafb;
+  font-size: 14px;
+}
+
+.contact-form input:focus {
+  border-color: #04724D; /* grün statt blau */
+  box-shadow: 0 0 0 3px rgba(4, 114, 77, 0.25);
+  outline: none;
 }
