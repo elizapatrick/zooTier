@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import { animals } from "../data/animals";
-import "./animals.css";
+import "./animal.css";
+import HeaderHome from "../components/HeaderHome";
 
 export function Animals() {
     return (
+        <>
+        <HeaderHome active="animals"></HeaderHome>
         <main className="animals-page">
             <div className="animals-page__hero">
                 <div className="animals-page__hero-inner">
@@ -50,5 +53,6 @@ export function Animals() {
                 </div>
             </section>
         </main>
+        </>
     );
 }

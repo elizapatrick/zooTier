@@ -183,28 +183,5 @@ export const animals = [
             "Their sense of smell can detect seals through ice",
             "Cubs usually stay with mothers for over two years"
         ]
-    },
-    {
-        id: "zebra",
-        name: "Plains Zebra",
-        scientificName: "Equus quagga",
-        category: "Mammal",
-        image:
-            "https://images.unsplash.com/photo-1456926631375-92c8ce872def?auto=format&fit=crop&w=1200&q=80",
-        description:
-            "Plains zebras are social grazers recognized by their black-and-white striped patterns.",
-        habitat: "African grasslands and savannas",
-        diet: "Herbivore - grasses and shrubs",
-        lifespan: "20-25 years",
-        status: "Near Threatened",
-        statusClass: "status-vulnerable",
-        fallback:
-            "https://images.unsplash.com/photo-1456926631375-92c8ce872def?auto=format&fit=crop&w=1200&q=80",
-        funFacts: [
-            "No two zebras have the same stripe pattern",
-            "They sleep standing up in short intervals",
-            "Zebras form close social bonds in herds",
-            "Their stripes may help with heat regulation"
-        ]
-    }
+}
 ];
