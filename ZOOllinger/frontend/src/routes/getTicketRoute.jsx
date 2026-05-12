@@ -7,6 +7,7 @@ import { OrderSummary } from "../components/OrderSummary";
 import TicketCard from "../components/TicketCard";
 import { adultIcon, childIcon, familyIcon } from "../components/Icons";
 import { ticketOptions } from "../components/bookingData";
+import HeaderHome from "../components/HeaderHome";
 
 export default function GetTicketRoute() {
   const [quantities, setQuantities] = useState(() =>
@@ -53,6 +54,8 @@ export default function GetTicketRoute() {
   };
 
   return (
+    <>
+    <HeaderHome active="tickets"></HeaderHome>
     <main className="booking-page">
 
       {/* HEADER */}
@@ -113,5 +116,6 @@ export default function GetTicketRoute() {
 
       </section>
     </main>
+    </>
   );
 }

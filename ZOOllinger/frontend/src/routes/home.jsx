@@ -4,7 +4,7 @@ import heroImg from '../../picture/home-picture.jpg';
 import lionImg from '../../picture/lion.jpg';
 import elephantImg from '../../picture/elephant.jpg';
 import parrotImg from '../../picture/parrot.jpg';
-
+import HeaderHome from "../components/HeaderHome";
 
 const featuredAnimals = [
   {
@@ -79,6 +79,8 @@ function IconHeart() {
 
 export function Home() {
   return (
+    <>
+    <HeaderHome active="home"></HeaderHome>
     <main className="home-page">
       <section className="hero">
         <img
@@ -202,5 +204,6 @@ export function Home() {
         </div>
       </section>
     </main>
+    </>
   );
 }

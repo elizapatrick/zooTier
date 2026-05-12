@@ -18,9 +18,9 @@ export default function HeaderHome({ active = "home" }) {
             </div>
 
             <nav className="nav">
-                <NavButton icon={Home} label="Home" active={active === "home"} />
-                <NavButton icon={PawPrint} label="Animals" active={active === "animals"} />
-                <NavButton icon={Ticket} label="Get Tickets" active={active === "tickets"} />
+                <NavButton to="/" icon={Home} label="Home" active={active === "home"} />
+                <NavButton to="/animals" icon={PawPrint} label="Animals" active={active === "animals"} />
+                <NavButton to="/tickets" icon={Ticket} label="Get Tickets" active={active === "tickets"} />
             </nav>
         </header>
     )

@@ -1,6 +1,6 @@
 import ActivityCard from "./ActivityCard"
-import elephantImg from "../../assets/elephant.png"
-import zebraImg from "../../assets/zebra.png"
+import elephantImg from "../../assets/elephant.jpg"
+import zebraImg from "../../assets/zebra.jpg"
 
 export default function ActivitiesList() {
   return (
