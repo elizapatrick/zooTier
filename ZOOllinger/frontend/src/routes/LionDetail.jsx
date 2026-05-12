@@ -2,8 +2,6 @@ import { Link } from "react-router-dom";
 import "./elephantDetail.css";
 
 import lionImg from "../../picture/lion.jpg";
-import elephantImg from "../../picture/elephant.jpg";
-import parrotImg from "../../picture/parrot.jpg";
 
 const animalData = {
   lion: {
@@ -25,48 +23,10 @@ const animalData = {
       "A lion's mane gets darker as it ages",
     ],
   },
-  elephant: {
-    id: "elephant",
-    name: "African Elephant",
-    scientificName: "Loxodonta africana",
-    category: "Mammal",
-    image: elephantImg,
-    description:
-      "African elephants are the largest land animals on Earth. They are highly intelligent, social creatures with complex family structures led by matriarchs.",
-    habitat: "African savannas, forests, and deserts",
-    diet: "Herbivore - grasses, leaves, bark, and fruits",
-    lifespan: "60-70 years",
-    status: "Endangered",
-    funFacts: [
-      "Elephants can recognize themselves in a mirror",
-      "They can communicate using infrasound below human hearing range",
-      "An elephant's trunk contains over 40,000 muscles",
-      "Elephants show empathy and mourn their dead",
-    ],
-  },
-  parrot: {
-    id: "parrot",
-    name: "Scarlet Macaw",
-    scientificName: "Ara macao",
-    category: "Bird",
-    image: parrotImg,
-    description:
-      "The Scarlet Macaw is one of the most spectacular parrots in the world, known for brilliant colors.",
-    habitat: "Tropical rainforests of Central and South America",
-    diet: "Herbivore - fruits, nuts, seeds, and flowers",
-    lifespan: "40-50 years",
-    status: "Least Concern",
-    funFacts: [
-      "Scarlet Macaws can fly at speeds up to 35 mph",
-      "They can live for decades and form strong pair bonds",
-      "Their beaks can crack very hard nuts",
-      "They can mimic human speech and sounds",
-    ],
-  },
 };
 
-export function ElephantDetail() {
-  const animal = animalData.elephant;
+export function LionDetail() {
+  const animal = animalData.lion;
 
   return (
     <main className="elephant-page">
@@ -96,25 +56,33 @@ export function ElephantDetail() {
 
         <section className="elephant-meta-grid">
           <article className="elephant-meta-card elephant-meta-card--green">
-            <div className="elephant-meta-icon" aria-hidden="true">📍</div>
+            <div className="elephant-meta-icon" aria-hidden="true">
+              📍
+            </div>
             <h3>Habitat</h3>
             <p>{animal.habitat}</p>
           </article>
 
           <article className="elephant-meta-card elephant-meta-card--brown">
-            <div className="elephant-meta-icon" aria-hidden="true">🍴</div>
+            <div className="elephant-meta-icon" aria-hidden="true">
+              🍴
+            </div>
             <h3>Diet</h3>
             <p>{animal.diet}</p>
           </article>
 
           <article className="elephant-meta-card elephant-meta-card--green">
-            <div className="elephant-meta-icon" aria-hidden="true">📅</div>
+            <div className="elephant-meta-icon" aria-hidden="true">
+              📅
+            </div>
             <h3>Lifespan</h3>
             <p>{animal.lifespan}</p>
           </article>
 
           <article className="elephant-meta-card elephant-meta-card--red">
-            <div className="elephant-meta-icon" aria-hidden="true">❗</div>
+            <div className="elephant-meta-icon" aria-hidden="true">
+              ❗
+            </div>
             <h3>Category</h3>
             <p>{animal.category}</p>
           </article>

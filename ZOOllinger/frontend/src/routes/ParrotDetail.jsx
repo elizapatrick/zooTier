@@ -1,49 +1,9 @@
 import { Link } from "react-router-dom";
 import "./elephantDetail.css";
 
-import lionImg from "../../picture/lion.jpg";
-import elephantImg from "../../picture/elephant.jpg";
 import parrotImg from "../../picture/parrot.jpg";
 
 const animalData = {
-  lion: {
-    id: "lion",
-    name: "African Lion",
-    scientificName: "Panthera leo",
-    category: "Mammal",
-    image: lionImg,
-    description:
-      "The lion is known as the king of the jungle, though it actually lives in grasslands and savannas.",
-    habitat: "African grasslands and savannas",
-    diet: "Carnivore - mainly zebras, wildebeest, and buffalo",
-    lifespan: "10-14 years",
-    status: "Vulnerable",
-    funFacts: [
-      "A lion's roar can be heard from up to 5 miles away",
-      "Female lions do most of the hunting",
-      "Lions sleep for up to 20 hours a day",
-      "A lion's mane gets darker as it ages",
-    ],
-  },
-  elephant: {
-    id: "elephant",
-    name: "African Elephant",
-    scientificName: "Loxodonta africana",
-    category: "Mammal",
-    image: elephantImg,
-    description:
-      "African elephants are the largest land animals on Earth. They are highly intelligent, social creatures with complex family structures led by matriarchs.",
-    habitat: "African savannas, forests, and deserts",
-    diet: "Herbivore - grasses, leaves, bark, and fruits",
-    lifespan: "60-70 years",
-    status: "Endangered",
-    funFacts: [
-      "Elephants can recognize themselves in a mirror",
-      "They can communicate using infrasound below human hearing range",
-      "An elephant's trunk contains over 40,000 muscles",
-      "Elephants show empathy and mourn their dead",
-    ],
-  },
   parrot: {
     id: "parrot",
     name: "Scarlet Macaw",
@@ -65,8 +25,8 @@ const animalData = {
   },
 };
 
-export function ElephantDetail() {
-  const animal = animalData.elephant;
+export function ParrotDetail() {
+  const animal = animalData.parrot;
 
   return (
     <main className="elephant-page">
@@ -96,25 +56,33 @@ export function ElephantDetail() {
 
         <section className="elephant-meta-grid">
           <article className="elephant-meta-card elephant-meta-card--green">
-            <div className="elephant-meta-icon" aria-hidden="true">📍</div>
+            <div className="elephant-meta-icon" aria-hidden="true">
+              📍
+            </div>
             <h3>Habitat</h3>
             <p>{animal.habitat}</p>
           </article>
 
           <article className="elephant-meta-card elephant-meta-card--brown">
-            <div className="elephant-meta-icon" aria-hidden="true">🍴</div>
+            <div className="elephant-meta-icon" aria-hidden="true">
+              🍴
+            </div>
             <h3>Diet</h3>
             <p>{animal.diet}</p>
           </article>
 
           <article className="elephant-meta-card elephant-meta-card--green">
-            <div className="elephant-meta-icon" aria-hidden="true">📅</div>
+            <div className="elephant-meta-icon" aria-hidden="true">
+              📅
+            </div>
             <h3>Lifespan</h3>
             <p>{animal.lifespan}</p>
           </article>
 
           <article className="elephant-meta-card elephant-meta-card--red">
-            <div className="elephant-meta-icon" aria-hidden="true">❗</div>
+            <div className="elephant-meta-icon" aria-hidden="true">
+              ❗
+            </div>
             <h3>Category</h3>
             <p>{animal.category}</p>
           </article>
