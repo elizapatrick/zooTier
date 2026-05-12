@@ -4,6 +4,7 @@ import "./elephantDetail.css";
 import lionImg from "../../picture/lion.jpg";
 import elephantImg from "../../picture/elephant.jpg";
 import parrotImg from "../../picture/parrot.jpg";
+import HeaderHome from "../components/HeaderHome";
 
 const animalData = {
   lion: {
@@ -74,6 +75,8 @@ export function ElephantDetail() {
   const animal = animalData.elephant;
 
   return (
+    <>
+    <HeaderHome active="animals"></HeaderHome>
     <main className="elephant-page">
       <div className="elephant-container">
         <Link to="/animals" className="elephant-back-button">
@@ -138,5 +141,6 @@ export function ElephantDetail() {
         </section>
       </div>
     </main>
+    </>
   );
 }
